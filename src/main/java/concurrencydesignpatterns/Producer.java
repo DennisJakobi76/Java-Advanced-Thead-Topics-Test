@@ -21,9 +21,10 @@ public class Producer  implements Runnable{
 
                 TimeUnit.MILLISECONDS.sleep(500L);
             }
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
+            queue.put(-1); // Indicate end of production
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
         }
     }
+}
 
